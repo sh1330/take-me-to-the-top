@@ -3,7 +3,7 @@
 ## Tools
 - Godot
 - C++
-Trying to use minimal GDScript, and use mainly C++
+- Trying to use minimal GDScript, and use mainly C++
 
 ## Phase
 - Setup: Completed
