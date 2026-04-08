@@ -1,12 +1,8 @@
 [gd_scene format=3 uid="uid://bn6b80q25bhta"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainUI" type="MainUI"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -25,7 +21,7 @@ offset_bottom = 352.57486
 text = "Player
 Sprite"
 
-[node name="player_hp_lbl" type="Label" parent="."]
+[node name="PlayerHpLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 148.0
 offset_top = 377.0
@@ -33,7 +29,7 @@ offset_right = 223.0
 offset_bottom = 400.0
 text = "Player HP"
 
-[node name="player_block_lbl" type="Label" parent="."]
+[node name="PlayerBlockLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 139.0
 offset_top = 405.0
@@ -41,12 +37,12 @@ offset_right = 234.0
 offset_bottom = 428.0
 text = "Player Block"
 
-[node name="player_energy_lbl" type="Label" parent="."]
+[node name="PlayerEnergyLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 188.0
-offset_top = 498.0
-offset_right = 241.0
-offset_bottom = 521.0
+offset_left = 213.0
+offset_top = 495.0
+offset_right = 266.0
+offset_bottom = 518.0
 text = "Energy"
 
 [node name="hand_area" type="ColorRect" parent="."]
@@ -57,15 +53,15 @@ offset_right = 786.0
 offset_bottom = 564.0
 color = Color(0.4045111, 0.40451115, 0.4045111, 1)
 
-[node name="enemy_hp_lbl" type="Label" parent="."]
+[node name="EnemyHpLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 932.0
 offset_top = 383.0
-offset_right = 1011.0
+offset_right = 1064.0
 offset_bottom = 406.0
 text = "Enemy HP"
 
-[node name="enemy_block_lbl" type="Label" parent="."]
+[node name="EnemyBlockLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 933.0
 offset_top = 411.0
@@ -82,7 +78,7 @@ offset_bottom = 356.57486
 text = "Enemy
 Sprite"
 
-[node name="end_turn_btn" type="Button" parent="."]
+[node name="EndTurnButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 903.0
 offset_top = 470.0
@@ -90,3 +86,12 @@ offset_right = 1040.0557
 offset_bottom = 551.0
 text = "End Turn
 "
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 71.0
+offset_right = 585.0
+offset_bottom = 94.0
+text = "Status"
+horizontal_alignment = 1
