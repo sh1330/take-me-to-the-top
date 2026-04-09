@@ -7,4 +7,5 @@
 
 ## Phase
 - Setup: Completed
-- Sprint 1: In progess
+- Sprint 1: In progress
+  - currrently adding all of the classes needed
