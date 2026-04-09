@@ -13,7 +13,7 @@ const std::vector<Card> Deck::get_cards() const {return cards;}
 void Deck::remove_card(size_t index) {
     cards.erase(cards.begin() + index);
 }
-void Deck::add_card(Card& card) {
+void Deck::add_card(const Card& card) {
     cards.push_back(card);
 }
 

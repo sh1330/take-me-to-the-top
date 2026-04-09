@@ -19,7 +19,7 @@ public:
     const std::vector<Card> get_cards() const;
 
     void remove_card(size_t index);
-    void add_card(Card& card);
+    void add_card(const Card& card);
     void play_card(Player& player, Enemy& enemy);
 };
 #endif
