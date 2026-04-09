@@ -14,7 +14,7 @@ int Enemy::get_max_hp() {return enemy_max_hp;}
 
 //setters
 void Enemy::gain_block(int amount) {
-    enemy_block += amount
+    enemy_block += amount;
 }
 
 void Enemy::gain_max_hp(int amount) {

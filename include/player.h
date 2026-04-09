@@ -12,13 +12,13 @@ private:
 
 public:
     Player();
-    ~Player();
+    ~Player() = default;
 
     int get_hp();
     int get_block();
     int get_energy();
     int get_max_hp();
-    int player_max_energy();
+    int get_max_energy();
 
     void reset_energy();
     void gain_block(int amount);

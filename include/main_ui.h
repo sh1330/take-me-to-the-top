@@ -5,6 +5,9 @@
 #include <godot_cpp/classes/label.hpp>
 #include <godot_cpp/classes/button.hpp>
 
+#include "player.h"
+#include "enemy.h"
+
 namespace godot {
 
 class MainUI : public Control {
@@ -18,10 +21,8 @@ private:
     Label *status_lbl = nullptr;
     Button *end_turn_btn = nullptr;
 
-    int player_hp = 30;
-    int player_block = 0;
-    int player_energy = 3;
-    int enemy_hp = 20;
+    Player player;
+    Enemy enemy;
 
 protected:
     static void _bind_methods();

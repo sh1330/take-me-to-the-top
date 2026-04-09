@@ -43,10 +43,10 @@ void MainUI::update_labels() {
         return;
     }
 
-    enemy_hp_lbl->set_text("Enemy HP: " + String::num_int64(enemy_hp));
-    player_hp_lbl->set_text("Player HP: " + String::num_int64(player_hp));
-    player_block_lbl->set_text("Block: " + String::num_int64(player_block));
-    player_energy_lbl->set_text("Energy: " + String::num_int64(player_energy));
+    enemy_hp_lbl->set_text("Enemy HP: " + String::num_int64(enemy.get_hp()));
+    player_hp_lbl->set_text("Player HP: " + String::num_int64(player.get_hp()));
+    player_block_lbl->set_text("Block: " + String::num_int64(player.get_block()));
+    player_energy_lbl->set_text("Energy: " + String::num_int64(player.get_energy()));
 }
 
 void MainUI::_on_end_turn_pressed() {
@@ -54,19 +54,11 @@ void MainUI::_on_end_turn_pressed() {
 
     int incoming_damage = 6;
 
-    if (player_block >= incoming_damage) {
-        player_block -= incoming_damage;
-    } else {
-        int damage_left = incoming_damage - player_block;
-        player_block = 0;
-        player_hp -= damage_left;
-    }
-
-    player_energy = 3;
-
+    player.lose_hp(incoming_damage);
+    player.reset_energy();
     update_labels();
 
-    if (player_hp <= 0) {
+    if (player.get_hp() <= 0) {
         status_lbl->set_text("You Lose");
         end_turn_btn->set_disabled(true);
         return;

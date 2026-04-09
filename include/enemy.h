@@ -9,7 +9,7 @@ private:
 
 public:
     Enemy();
-    ~Enemy();
+    ~Enemy() = default;
 
     int get_hp();
     int get_block();

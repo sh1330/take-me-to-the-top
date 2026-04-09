@@ -22,9 +22,9 @@ if not (os.path.isdir("godot-cpp") and os.listdir("godot-cpp")):
 
 env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs})
 
-env.Append(CPPPATH=["src/", "include/"])
+env.Append(CPPPATH=[".", "src/", "include/"])
 
-sources = Glob("src/*.cpp")
+sources = Glob("*.cpp") + Glob("src/*.cpp")
 
 suffix = env["suffix"].replace(".dev", "").replace(".universal", "")
 lib_filename = "{}{}{}{}".format(

@@ -50,7 +50,8 @@ void Player::gain_hp(int amount) {
     player_hp += amount;
 }
 
-void lose_hp(int amount) {
+void Player::lose_hp(int amount) {
     player_hp -= amount;
 }
+
 
