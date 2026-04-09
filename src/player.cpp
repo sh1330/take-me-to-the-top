@@ -5,7 +5,8 @@ Player::Player()
     player_block(0),
     player_energy(3),
     player_max_hp(30),
-    player_max_energy(3){
+    player_max_energy(3),
+    is_turn(true){
 }
 
 //getters
@@ -27,6 +28,10 @@ int Player::get_max_hp() {
 
 int Player::get_max_energy() {
     return player_max_energy;
+}
+
+bool Player::get_is_turn() {
+    return is_turn;
 }
 
 //setters

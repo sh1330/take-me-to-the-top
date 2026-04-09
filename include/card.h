@@ -6,6 +6,8 @@ private:
     int damage;
     int block;
     int energy_cost;
+
+    bool selected;
     
 
 
@@ -16,5 +18,6 @@ public:
     int get_damage();
     int get_block();
     int get_energy_cost();
+    bool get_selected();
 };
 #endif

@@ -8,6 +8,7 @@
 #include "player.h"
 #include "enemy.h"
 #include "card.h"
+#include "deck.h"
 
 namespace godot {
 
