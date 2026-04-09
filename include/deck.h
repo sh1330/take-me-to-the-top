@@ -3,6 +3,8 @@
 
 #include <vector>
 #include "card.h"
+#include "player.h"
+#include "enemy.h"
 
 class Deck {
 private:
@@ -14,7 +16,7 @@ public:
     ~Deck();
 
     int get_num();
-    std::vector<Card> get_cards();
+    const std::vector<Card> get_cards() const;
 
     void remove_card(size_t index);
     void add_card(Card& card);

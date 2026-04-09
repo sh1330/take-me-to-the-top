@@ -15,9 +15,9 @@ public:
     Card(int dmg, int blck, int cost);
     ~Card() = default;
 
-    int get_damage();
-    int get_block();
-    int get_energy_cost();
-    bool get_selected();
+    int get_damage() const;
+    int get_block() const;
+    int get_energy_cost() const;
+    bool get_selected() const;
 };
 #endif

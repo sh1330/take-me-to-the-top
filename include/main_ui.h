@@ -26,6 +26,7 @@ private:
 
     Player player;
     Enemy enemy;
+    Deck deck;
 
 protected:
     static void _bind_methods();
@@ -36,6 +37,7 @@ public:
 
     void _ready();
     void update_labels();
+    void update_card_display();
     void _on_end_turn_pressed();
 };
 

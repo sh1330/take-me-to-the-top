@@ -3,6 +3,7 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/callable.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/classes/h_box_container.hpp>
 
 using namespace godot;
 
@@ -36,6 +37,11 @@ void MainUI::_ready() {
 
     update_labels();
     status_lbl->set_text("Player turn");
+
+    deck.add_card(Card(6, 0, 1));
+    deck.add_card(Card(0, 5, 1));
+    deck.add_card(Card(10, 0, 2));
+    update_card_display();
 }
 
 void MainUI::update_labels() {
@@ -67,4 +73,35 @@ void MainUI::_on_end_turn_pressed() {
     }
 
     status_lbl->set_text("Player turn");
+}
+
+void MainUI::update_card_display() {
+    HBoxContainer *card_container = get_node<HBoxContainer>("CardContainer");
+    if (!card_container) {
+        UtilityFunctions::printerr("CardContainer not found.");
+        return;
+    }
+
+    // remove old card UI
+    Array children = card_container->get_children();
+    for (int i = 0; i < children.size(); i++) {
+        Node *child = Object::cast_to<Node>(children[i]);
+        if (child) {
+            child->queue_free();
+        }
+    }
+
+    // add one UI element per card
+    const std::vector<Card> &cards = deck.get_cards();
+
+    for (const Card &card : cards) {
+        Button *card_button = memnew(Button);
+
+        String text = "DMG: " + String::num_int64(card.get_damage()) +
+                      "\nBLK: " + String::num_int64(card.get_block()) +
+                      "\nCOST: " + String::num_int64(card.get_energy_cost());
+
+        card_button->set_text(text);
+        card_container->add_child(card_button);
+    }
 }
