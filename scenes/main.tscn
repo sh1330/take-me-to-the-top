@@ -14,20 +14,21 @@ text = "Take Me to the Top Demo"
 
 [node name="player_sprite_placeholder" type="Button" parent="."]
 layout_mode = 0
-offset_left = 148.0
-offset_top = 222.0
-offset_right = 221.0918
-offset_bottom = 352.57486
+offset_left = 147.0
+offset_top = 247.0
+offset_right = 220.0918
+offset_bottom = 377.57486
 text = "Player
 Sprite"
 
 [node name="PlayerHpLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 148.0
-offset_top = 377.0
-offset_right = 223.0
-offset_bottom = 400.0
-text = "Player HP"
+offset_left = 133.0
+offset_top = 384.0
+offset_right = 235.0
+offset_bottom = 407.0
+text = "Player HP: 30"
+horizontal_alignment = 1
 
 [node name="PlayerBlockLabel" type="Label" parent="."]
 layout_mode = 0
@@ -35,7 +36,8 @@ offset_left = 139.0
 offset_top = 405.0
 offset_right = 234.0
 offset_bottom = 428.0
-text = "Player Block"
+text = "Block: 0"
+horizontal_alignment = 1
 
 [node name="PlayerEnergyLabel" type="Label" parent="."]
 layout_mode = 0
@@ -43,7 +45,7 @@ offset_left = 213.0
 offset_top = 495.0
 offset_right = 266.0
 offset_bottom = 518.0
-text = "Energy"
+text = "Energy: 3"
 
 [node name="hand_area" type="ColorRect" parent="."]
 layout_mode = 0
@@ -55,26 +57,28 @@ color = Color(0.4045111, 0.40451115, 0.4045111, 1)
 
 [node name="EnemyHpLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 932.0
-offset_top = 383.0
-offset_right = 1064.0
-offset_bottom = 406.0
-text = "Enemy HP"
+offset_left = 907.0
+offset_top = 387.0
+offset_right = 1039.0
+offset_bottom = 410.0
+text = "Enemy HP: 50"
+horizontal_alignment = 1
 
 [node name="EnemyBlockLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 933.0
-offset_top = 411.0
-offset_right = 1012.0
-offset_bottom = 434.0
+offset_left = 920.0
+offset_top = 408.0
+offset_right = 1019.0
+offset_bottom = 431.0
 text = "Enemy Block"
+horizontal_alignment = 1
 
 [node name="enemy_sprite_placeholder" type="Button" parent="."]
 layout_mode = 0
-offset_left = 935.0
-offset_top = 226.0
-offset_right = 1008.0918
-offset_bottom = 356.57486
+offset_left = 936.0
+offset_top = 254.0
+offset_right = 1009.0918
+offset_bottom = 384.57486
 text = "Enemy
 Sprite"
 
@@ -93,5 +97,5 @@ offset_left = 536.0
 offset_top = 71.0
 offset_right = 585.0
 offset_bottom = 94.0
-text = "Status"
+text = "Player turn"
 horizontal_alignment = 1

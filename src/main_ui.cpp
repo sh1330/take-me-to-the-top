@@ -19,6 +19,7 @@ MainUI::~MainUI() {
 
 void MainUI::_ready() {
     enemy_hp_lbl = get_node<Label>("EnemyHpLabel");
+    enemy_block_lbl = get_node<Label>("EnemyBlockLabel");
     player_hp_lbl = get_node<Label>("PlayerHpLabel");
     player_block_lbl = get_node<Label>("PlayerBlockLabel");
     player_energy_lbl = get_node<Label>("PlayerEnergyLabel");
@@ -26,7 +27,7 @@ void MainUI::_ready() {
     end_turn_btn = get_node<Button>("EndTurnButton");
 
     if (!enemy_hp_lbl || !player_hp_lbl || !player_block_lbl ||
-        !player_energy_lbl || !status_lbl || !end_turn_btn) {
+        !player_energy_lbl || !status_lbl || !end_turn_btn || !enemy_block_lbl) {
         UtilityFunctions::printerr("MainUI: one or more UI nodes were not found.");
         return;
     }
@@ -43,10 +44,11 @@ void MainUI::update_labels() {
         return;
     }
 
-    enemy_hp_lbl->set_text("Enemy HP: " + String::num_int64(enemy.get_hp()));
-    player_hp_lbl->set_text("Player HP: " + String::num_int64(player.get_hp()));
-    player_block_lbl->set_text("Block: " + String::num_int64(player.get_block()));
-    player_energy_lbl->set_text("Energy: " + String::num_int64(player.get_energy()));
+    enemy_hp_lbl->set_text(String::num_int64(enemy.get_hp()) + "/" + String::num_int64(enemy.get_max_hp()) + " <3");
+    player_hp_lbl->set_text(String::num_int64(player.get_hp()) + "/" + String::num_int64(player.get_max_hp()) + " <3");
+    player_block_lbl->set_text(String::num_int64(player.get_block()) + " Block");
+    player_energy_lbl->set_text(String::num_int64(player.get_energy()) + " Energy");
+    enemy_block_lbl->set_text(String::num_int64(enemy.get_block()) + " Block");
 }
 
 void MainUI::_on_end_turn_pressed() {

@@ -7,6 +7,7 @@
 
 #include "player.h"
 #include "enemy.h"
+#include "card.h"
 
 namespace godot {
 
@@ -19,6 +20,7 @@ private:
     Label *player_block_lbl = nullptr;
     Label *player_energy_lbl = nullptr;
     Label *status_lbl = nullptr;
+    Label *enemy_block_lbl = nullptr;
     Button *end_turn_btn = nullptr;
 
     Player player;
