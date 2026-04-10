@@ -8,4 +8,5 @@
 ## Phase
 - Setup: Completed
 - Sprint 1: In progress
-  - currrently adding all of the classes needed
+  - adding all of the classes needed
+  - forming the main battle page, and wiring buttons and labels)
