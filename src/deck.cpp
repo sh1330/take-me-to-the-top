@@ -10,6 +10,10 @@ Deck::Deck()
 int Deck::get_num() {return num;}
 const std::vector<Card> Deck::get_cards() const {return cards;}
 
+std::vector<Card>& Deck::get_mut_cards() {
+    return cards;
+}
+
 void Deck::remove_card(size_t index) {
     cards.erase(cards.begin() + index);
 }

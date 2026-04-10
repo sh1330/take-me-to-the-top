@@ -12,3 +12,7 @@ int Card::get_damage() const {return damage;}
 int Card::get_block() const {return block;}
 int Card::get_energy_cost() const {return energy_cost;}
 bool Card::get_selected() const {return selected;}
+
+void Card::set_selected(bool value) {
+    selected = value;
+}

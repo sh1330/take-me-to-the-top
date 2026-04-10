@@ -19,5 +19,7 @@ public:
     int get_block() const;
     int get_energy_cost() const;
     bool get_selected() const;
+
+    void set_selected(bool value);
 };
 #endif

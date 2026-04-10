@@ -17,6 +17,7 @@ public:
 
     int get_num();
     const std::vector<Card> get_cards() const;
+    std::vector<Card>& get_mut_cards();
 
     void remove_card(size_t index);
     void add_card(const Card& card);

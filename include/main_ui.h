@@ -39,6 +39,7 @@ public:
     void update_labels();
     void update_card_display();
     void _on_end_turn_pressed();
+    void _on_card_pressed(size_t index);
 };
 
 } // namespace godot

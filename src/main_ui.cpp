@@ -74,6 +74,26 @@ void MainUI::_on_end_turn_pressed() {
     status_lbl->set_text("Player turn");
 }
 
+void MainUI::_on_card_pressed(size_t index) {
+    //create the mutable cards vector
+    std::vector<Card>& cards = deck.get_mut_cards();
+    //check if its a valid index
+    if ((index < 0) || (index > cards.size())) {
+        UtilityFunctions::printerr("Invalid index");
+        return;
+    }
+    // unselect everything else first 
+    for (size_t i = 0; i < cards.size(); i++) {
+        cards[i].set_selected(false);
+    }
+    //select the card
+    cards[index].set_selected(true);
+    //do the stuff
+    deck.play_card(player, enemy);
+    update_labels();
+    update_card_display();
+}
+
 void MainUI::update_card_display() {
     HBoxContainer *card_container = get_node<HBoxContainer>("CardContainer");
     if (!card_container) {
