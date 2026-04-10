@@ -4,5 +4,6 @@ compatibility_minimum = "4.1"
 reloadable = true
 
 [libraries]
-linux.debug.x86_64 = "./linux/libcardgame.linux.template_debug.x86_64.so"
-linux.release.x86_64 = "./linux/libcardgame.linux.template_release.x86_64.so"
+linux.debug.x86_64 = "res://bin/linux/libcardgame.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://bin/linux/libcardgame.linux.template_release.x86_64.so"
+linux.x86_64 = "res://bin/linux/libcardgame.linux.template_debug.x86_64.so"

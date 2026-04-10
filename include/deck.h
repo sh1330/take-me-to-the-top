@@ -13,7 +13,7 @@ private:
 
 public:
     Deck();
-    ~Deck();
+    ~Deck() = default;
 
     int get_num();
     const std::vector<Card> get_cards() const;
