@@ -9,6 +9,7 @@ using namespace godot;
 void MainUI::_bind_methods() {
     ClassDB::bind_method(D_METHOD("_on_end_turn_pressed"), &MainUI::_on_end_turn_pressed);
     ClassDB::bind_method(D_METHOD("update_labels"), &MainUI::update_labels);
+    ClassDB::bind_method(D_METHOD("_on_card_pressed", "index"), &MainUI::_on_card_pressed);
 }
 
 MainUI::MainUI() {
@@ -37,11 +38,17 @@ void MainUI::_ready() {
     update_labels();
     status_lbl->set_text("Player turn");
 
-    deck.add_card(Card(6, 0, 1));
-    deck.add_card(Card(0, 5, 1));
-    deck.add_card(Card(10, 0, 2));
+    deck.add_card(Card(6, 0, 1, false, Draw));
+    deck.add_card(Card(0, 5, 1, false, Draw));
+    deck.add_card(Card(6, 0, 1, false, Draw));
+    deck.add_card(Card(0, 5, 1, false, Draw));
+    deck.add_card(Card(10, 0, 2, false, Draw));
+    deck.add_card(Card(10, 0, 2, false, Draw));
+
+    deck.put_5_draw_cards_in_hand();
     update_card_display();
 }
+
 
 void MainUI::update_labels() {
     if (!enemy_hp_lbl || !player_hp_lbl || !player_block_lbl ||
@@ -72,27 +79,29 @@ void MainUI::_on_end_turn_pressed() {
     }
 
     status_lbl->set_text("Player turn");
+    deck.put_5_draw_cards_in_hand();
+    update_card_display();
 }
 
-void MainUI::_on_card_pressed(size_t index) {
-    //create the mutable cards vector
+void MainUI::_on_card_pressed(int index) {
     std::vector<Card>& cards = deck.get_mut_cards();
-    //check if its a valid index
-    if ((index < 0) || (index > cards.size())) {
+
+    if (index < 0 || index >= (int)cards.size()) {
         UtilityFunctions::printerr("Invalid index");
         return;
     }
-    // unselect everything else first 
+
     for (size_t i = 0; i < cards.size(); i++) {
         cards[i].set_selected(false);
     }
-    //select the card
+
     cards[index].set_selected(true);
-    //do the stuff
+
     deck.play_card(player, enemy);
     update_labels();
     update_card_display();
 }
+
 
 void MainUI::update_card_display() {
     HBoxContainer *card_container = get_node<HBoxContainer>("CardContainer");
@@ -101,7 +110,6 @@ void MainUI::update_card_display() {
         return;
     }
 
-    // remove old card UI
     Array children = card_container->get_children();
     for (int i = 0; i < children.size(); i++) {
         Node *child = Object::cast_to<Node>(children[i]);
@@ -110,17 +118,22 @@ void MainUI::update_card_display() {
         }
     }
 
-    // add one UI element per card
     const std::vector<Card> &cards = deck.get_cards();
 
-    for (const Card &card : cards) {
-        Button *card_button = memnew(Button);
+    for (size_t i = 0; i < cards.size(); i++) {
+        if (cards[i].get_which_pile() == Hand) {
+            Button *card_button = memnew(Button);
 
-        String text = "DMG: " + String::num_int64(card.get_damage()) +
-                      "\nBLK: " + String::num_int64(card.get_block()) +
-                      "\nCOST: " + String::num_int64(card.get_energy_cost());
+            String text = "DMG: " + String::num_int64(cards[i].get_damage()) +
+                          "\nBLK: " + String::num_int64(cards[i].get_block()) +
+                          "\nCOST: " + String::num_int64(cards[i].get_energy_cost());
 
-        card_button->set_text(text);
-        card_container->add_child(card_button);
+            card_button->set_text(text);
+
+            Callable pressed_callable = Callable(this, "_on_card_pressed").bind((int)i);
+            card_button->connect("pressed", pressed_callable);
+
+            card_container->add_child(card_button);
+        }
     }
 }
