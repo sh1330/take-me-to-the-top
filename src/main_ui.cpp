@@ -44,6 +44,13 @@ void MainUI::_ready() {
     deck.add_card(Card(0, 5, 1, false, Draw));
     deck.add_card(Card(10, 0, 2, false, Draw));
     deck.add_card(Card(10, 0, 2, false, Draw));
+    
+    deck.add_card(Card(6, 0, 1, false, Draw));
+    deck.add_card(Card(0, 5, 1, false, Draw));
+    deck.add_card(Card(6, 0, 1, false, Draw));
+    deck.add_card(Card(0, 5, 1, false, Draw));
+    deck.add_card(Card(10, 0, 2, false, Draw));
+    deck.add_card(Card(10, 0, 2, false, Draw));
 
     deck.put_5_draw_cards_in_hand();
     update_card_display();
@@ -70,6 +77,7 @@ void MainUI::_on_end_turn_pressed() {
 
     player.lose_hp(incoming_damage);
     player.reset_energy();
+    player.reset_block();
     update_labels();
 
     if (player.get_hp() <= 0) {
@@ -79,6 +87,7 @@ void MainUI::_on_end_turn_pressed() {
     }
 
     status_lbl->set_text("Player turn");
+    deck.put_hand_in_discard();
     deck.put_5_draw_cards_in_hand();
     update_card_display();
 }

@@ -29,5 +29,7 @@ public:
     void lose_energy(int amount);
     void gain_hp(int amount);
     void lose_hp(int amount);
+    void reset_block();
+    void lose_block(int amount);
 };
 #endif

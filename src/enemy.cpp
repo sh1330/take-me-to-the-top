@@ -26,6 +26,12 @@ void Enemy::gain_hp(int amount) {
 }
 
 void Enemy::lose_hp(int amount) {
+    if (enemy_block > 0) {
+            amount -= enemy_block;
+    }
+    if (amount < 0) {
+        amount = 0;
+    }
     enemy_hp -= amount;
 }
  

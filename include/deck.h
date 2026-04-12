@@ -27,6 +27,7 @@ public:
     int count_draw_cards();
     void refill_draw_cards();
     void move_to_discard(size_t index);
+    void put_hand_in_discard();
 
 
 };

@@ -56,6 +56,13 @@ void Player::gain_hp(int amount) {
 }
 
 void Player::lose_hp(int amount) {
+
+    if (player_block > 0) {
+            amount -= player_block;
+    }
+    if (amount < 0) {
+        amount = 0;
+    }
     player_hp -= amount;
 }
 
@@ -63,5 +70,12 @@ void Player::lose_energy(int amount) {
     player_energy -= amount;
 }
 
+void Player::reset_block() {
+    player_block = 0;
+}
+
+void Player::lose_block(int amount) {
+    player_block -= amount;
+}
 
 

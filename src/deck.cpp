@@ -63,6 +63,15 @@ void Deck::put_5_draw_cards_in_hand() {
     }
 }
 
+void Deck::put_hand_in_discard() {
+    for (Card &card : cards) {
+        if (card.get_which_pile() == Hand) {
+            card.set_pile(Discard);
+        }
+    }
+}
+
+
 int Deck::count_draw_cards() {
     int count = 0;
     for (Card & card : cards) {
